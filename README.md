@@ -61,3 +61,6 @@ Fraud Detection: Classifies transactions as legitimate or suspicious based on pa
 In this project, we used Python, Scikit-learn, Pandas, and Matplotlib within Visual Studio Code (VS Code) to develop a Decision Tree Classifier to analyze employee attrition data. The entire workflow—from data loading and preprocessing to model training, evaluation, and visualization—was implemented in a clear, modular fashion. This approach demonstrates not only how decision trees function, but also how they can be applied in real-world scenarios such as HR analytics, finance, healthcare, and education.
 
 VS Code proved to be an efficient platform for development, offering strong support for Python and data science tooling. The resulting model provides insights into key factors driving employee turnover, and the visual representation of the tree enhances its interpretability—making this approach both practical and explainable for business users and analysts alike.
+
+# OUTPUT 
+<img width="1906" height="931" alt="Image" src="https://github.com/user-attachments/assets/e5ae3c81-5f7c-40a0-9ea3-80488e159244" />

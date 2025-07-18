@@ -1,0 +1,40 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.metrics import accuracy_score
+
+df = pd.read_csv("test.csv.zip", compression='zip')
+
+df.drop(columns=['Employee ID'], inplace=True)
+
+label_encoders = {}
+for column in df.select_dtypes(include=['object']).columns:
+    le = LabelEncoder()
+    df[column] = le.fit_transform(df[column])
+    label_encoders[column] = le
+
+X = df.drop(columns=['Attrition'])
+y = df['Attrition']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+clf = DecisionTreeClassifier(criterion='entropy', random_state=42, max_depth=5)
+clf.fit(X_train, y_train)
+
+y_pred = clf.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Model Accuracy: {accuracy:.2%}")
+
+plt.figure(figsize=(20, 10))
+plot_tree(
+    clf,
+    feature_names=X.columns,
+    class_names=label_encoders['Attrition'].classes_,
+    filled=True,
+    rounded=True,
+    fontsize=10
+)
+plt.title("Decision Tree for Employee Attrition")
+plt.show()
